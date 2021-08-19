@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.3" release="1">
+	<announcement text="DNDestiny Character Sheet" font="emotefont" icon="rulesetlogo_CoreRPG" />
+	<properties>
+		<name>DNDestiny Character Sheet</name>
+		<version>0.1</version>
+		<author>Myles Dixon</author>
+		<description>An Extension for the 5E Ruleset to modify the character sheet to work with the DNDestiny System.</description>
+			<ruleset>
+				<name>5E</name>
+			</ruleset>
+	</properties>
+	<base>
+		<!-- Campaign Records -->
+		<includefile source="campaign\record_char_main.xml" />
+		<includefile source="campaign\record_char.xml" />
+		
+		<!-- Combat Tracker -->
+		<includefile source="ct\ct_client.xml" />
+		<includefile source="ct\ct_host.xml" />
+		<includefile source="ct\template_ct.xml" />
+
+		<!-- Strings -->
+		<includefile source="strings\strings_dndestiny.xml" />
+
+		<!-- Scripts -->
+		<script name="DataCommon_DNDestiny" file="scripts\data_common_dndestiny.lua" />
+	</base>
+</root>

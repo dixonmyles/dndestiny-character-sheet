@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet" merge="join">
+		<frame>charsheet</frame>
+		<placement>
+			<size width="550" height="600" />
+		</placement>
+		<sizelimits>
+			<minimum width="550" height="570" />
+			<dynamic />
+		</sizelimits>
+	</windowclass>
+</root>

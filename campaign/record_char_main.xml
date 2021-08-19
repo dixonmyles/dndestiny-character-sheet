@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+  <windowclass name="charsheet_main" merge="join">
+    <sheetdata>
+      <number_charwounds name="wounds" source="hp.wounds">
+				<anchored to="healthtitle" width="50" height="30">
+					<top anchor="bottom" offset="15" />
+					<left anchor="center" offset="-110" />
+				</anchored>
+			</number_charwounds>
+      <number_dropadd name="hp" source="hp.total">
+				<anchored to="wounds" position="righthigh" offset="15,0" width="50" height="30" />
+			</number_dropadd>
+			<basicnumber name="temphp" source="hp.temporary" merge="delete" />
+			<label_charfieldtop name="temphp_label" merge="delete" />
+      <basicnumber name="shield" source="hp.shield">
+				<anchored to="hp" position="righthigh" offset="15,0" width="50" height="30" />
+				<font>reference-b-large</font>
+				<color>0000AA</color>
+				<description textres="shield" />
+				<hideonvalue>0</hideonvalue>
+				<script>
+					function onDrop(x, y, draginfo)
+						if draginfo.getType() == "number" then
+							if draginfo.getNumberData() &gt; 0 then
+								setValue(draginfo.getNumberData());
+							else
+								setValue(getValue() + draginfo.getNumberData());
+							end
+						end
+						
+						return true;
+					end
+				</script>
+			</basicnumber>
+      <label_charfieldtop name="shield_label">
+				<anchored to="shield" offset="0,15" />
+				<static textres="char_label_shield" />
+			</label_charfieldtop>
+      <basicnumber name="overshield" source="hp.overshield">
+        <anchored to="shield" position="righthigh" offset="15,0" width="50" height="30" />
+        <font>reference-b-large</font>
+        <color>0000AA</color>
+        <description textres="overshield" />
+        <hideonvalue>0</hideonvalue>
+        <script>
+					function onDrop(x, y, draginfo)
+						if draginfo.getType() == "number" then
+							if draginfo.getNumberData() &gt; 0 then
+								setValue(draginfo.getNumberData());
+							else
+								setValue(getValue() + draginfo.getNumberData());
+							end
+						end
+						
+						return true;
+					end
+				</script>
+      </basicnumber>
+      <label_charfieldtop name="overshield_label">
+        <anchored to="overshield" offset="0,15" />
+        <static textres="char_label_overshield" />
+      </label_charfieldtop>
+      <stringcontrol name="deathsave_label">
+				<anchored to="hd" position="righthigh" offset="10,-5" width="65" />
+			</stringcontrol>
+    </sheetdata>
+  </windowclass>
+</root>

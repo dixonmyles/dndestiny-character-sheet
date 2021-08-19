@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+  <!-- Common -->
+  <string name="shield">Shield</string>
+  <!-- Campaign -->
+  <string name="char_label_overshield">OVSHD</string>
+	<string name="char_label_shield">SHIELD</string>
+
+  <!-- CT -->
+  <string name="ct_tooltip_shield">Remaining Shields</string>
+  <string name="ct_tooltip_overshield">Remaining Overshield</string>
+  <string name="ct_label_shield">Shd</string>
+  <string name="ct_label_overshield">Over</string>
+
+	<!-- Skills -->
+	<string name="skill_value_technology">Technology</string>
+</root>

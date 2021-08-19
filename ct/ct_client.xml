@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+  <windowclass name="combattracker_client" merge="join">
+		<script>
+			function onInit()
+				super.onInit();
+				OptionsManager.registerCallback("SHPC", updateHealthDisplay);
+				OptionsManager.registerCallback("SHNPC", updateHealthDisplay);
+				updateHealthDisplay();
+			end
+			
+			function onClose()
+				super.onClose();
+				OptionsManager.unregisterCallback("SHPC", updateHealthDisplay);
+				OptionsManager.unregisterCallback("SHNPC", updateHealthDisplay);
+			end
+			
+			function updateHealthDisplay()
+				local sOptSHPC = OptionsManager.getOption("SHPC");
+				local sOptSHNPC = OptionsManager.getOption("SHNPC");
+				local bShowDetail = (sOptSHPC == "detailed") or (sOptSHNPC == "detailed");
+				
+				label_hp.setVisible(bShowDetail);
+				label_shield.setVisible(bShowDetail);
+        label_overshield.setVisible(bShowDetail);
+				label_wounds.setVisible(bShowDetail);
+
+				label_status.setVisible(not bShowDetail);
+
+				for _,w in pairs(list.getWindows()) do
+					w.updateHealthDisplay();
+				end
+			end
+		</script>
+    <sheetdata>
+			<frame_ctbox_client_header name="frame_label" insertbefore="label_init" />
+			<label_ct_right name="label_wounds" insertbefore="label_init">
+				<static textres="ct_label_wounds" />
+				<tooltip textres="ct_tooltip_wounds" />
+			</label_ct_right>
+      <label_ct_right name="label_overshield" insertbefore="label_init">
+				<static textres="ct_label_overshield" />
+				<tooltip textres="ct_tooltip_overshield" />
+			</label_ct_right>
+			<label_ct_right name="label_shield" insertbefore="label_init">
+				<static textres="ct_label_shield" />
+				<tooltip textres="ct_tooltip_shield" />
+			</label_ct_right>
+			<label_ct_right name="label_hp" insertbefore="label_init">
+				<static textres="hp" />
+				<tooltip textres="hitpoints" />
+			</label_ct_right>
+		</sheetdata>
+  </windowclass>
+
+	<windowclass name="client_ct_entry" merge="join">
+		<script file="ct/scripts/clientct_entry.lua" />
+		<sheetdata>
+			<base_clientct_health name="healthbase" insertbefore="initresult" />
+			<string_clientct_status name="status" insertbefore="initresult" />
+			<number_clientct_wounds name="wounds" insertbefore="initresult" />
+			<number_clientct_overshield name="overshield" insertbefore="initresult" />
+			<number_clientct_shield name="shield" insertbefore="initresult" />
+			<number_clientct_hp name="hptotal" insertbefore="initresult" />
+		</sheetdata>
+	</windowclass>
+</root>
